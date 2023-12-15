@@ -5,6 +5,7 @@ import java.util.List;
 import Utile.ScannerUtile;
 import dao.AccountBookDAO;
 import dto.AccountBookDTO;
+import dto.SummaryDTO;
 
 public class AccountBook {
 	
@@ -223,14 +224,30 @@ public class AccountBook {
 		printList(dtoList);
 	}
 	
-	public void monthlySummary() {
+	public void monthlySummary() { // 월별 결산
+		System.out.println();
+		System.out.println("월별 결산 ----------------------------- ");
+		System.out.println();
+		
+		List<SummaryDTO> dtoList = dao.monthlySumAccount();
+		
+		System.out.println("달\t 수입\t 지출\t 총금액");
+		System.out.println("------------------------------------------------");
+		for(SummaryDTO dto : dtoList) {
+			System.out.println( dto.getMonth() + "\t "+dto.getInAmount()+"\t "+dto.getOutAmount()+"\t "+dto.getTotalAmount());
+		}
 		
 	}
-	public void totalSummary() {
-		System.out.println("전체 ");
+	public void totalSummary() { // 총결산
+		System.out.println();
+		System.out.println("총 결산 ----------------------------- ");
+		System.out.println();
 		
+		SummaryDTO dto = dao.totalSummary();
 		
-		
+		System.out.println("수입\t\t 지출\t\t 총금액");
+		System.out.println("------------------------------------------");
+		System.out.println( dto.getInAmount()+"\t "+dto.getOutAmount()+"\t "+dto.getTotalAmount());
 		
 	}
 	

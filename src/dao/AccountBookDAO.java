@@ -135,7 +135,8 @@ public class AccountBookDAO {
 					+ "		sum(case when Type = 'in' THEN Amount else 0 END) AS inAmount, "
 					+ "		sum(case when Type = 'out' THEN Amount else 0 END) AS outAmount "
 					+ "from AccountBook "
-					+ "group by DATE_FORMAT(Date, '%Y-%m')";
+					+ "group by DATE_FORMAT(Date, '%Y-%m') "
+					+ "order by Month";
 	
 		return executeQueryForSummary(sql);
 	}
