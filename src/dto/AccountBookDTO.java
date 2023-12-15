@@ -83,8 +83,8 @@ public class AccountBookDTO {
 
 	@Override
 	public String toString() {
-		return "AccountBookDTO [seq=" + seq + ", type=" + type + ", amount=" + amount + ", category=" + category
-				+ ", place=" + place + ", memo=" + memo + ", date=" + date + "]";
+		return seq + ", " + type + ", " + amount + ", " + category
+				+ ", " + place + ", " + memo + ", " + date;
 	}
 
 	
