@@ -75,7 +75,8 @@ public class AccountBookDAO {
 	// 날짜 검색
 	public List<AccountBookDTO> dateSelect (String date) {
 		String sql 	= "select "
-					+ "seq, Type, Amount, Category, Place, Memo, DATE(Date) as Date " 
+					+ "seq, Type, Amount, Category, Place, Memo, DATE(Date) as Date "
+					+ "from AccountBook "
 					+ "where Date = '"+ date +"' "
 					+ "order by Date";
 		
@@ -86,6 +87,7 @@ public class AccountBookDAO {
 	public List<AccountBookDTO> placeSearch (String keyword) {
 		String sql 	= "select "
 					+ "seq, Type, Amount, Category, Place, Memo, DATE(Date) as Date " 
+					+ "from AccountBook "
 					+ "where Place like '%"+ keyword +"%' "
 					+ "order by Date";
 		
@@ -97,7 +99,8 @@ public class AccountBookDAO {
 													   // 띄어쓰기 제외
 		String sql 	= "select "
 					+ "seq, Type, Amount, Category, Place, Memo, DATE(Date) as Date " 
-					+"where replace(Memo, ' ', '') like '%"+ keyword +"%' "
+					+ "from AccountBook "
+					+ "where replace(Memo, ' ', '') like '%"+ keyword +"%' "
 					+ "order by Date";
 		
 		return executeQueryForSelect(sql);
@@ -107,6 +110,7 @@ public class AccountBookDAO {
 	public List<AccountBookDTO> categorySearch (String category) {
 		String sql 	= "select "
 					+ "seq, Type, Amount, Category, Place, Memo, DATE(Date) as Date " 
+					+ "from AccountBook "
 					+ "where Category = '"+ category +"' "
 					+ "order by Date";
 		
@@ -118,6 +122,7 @@ public class AccountBookDAO {
 	public List<AccountBookDTO> periodSelect (String startDate, String endDate) {
 		String sql 	= "select "
 					+ "seq, Type, Amount, Category, Place, Memo, DATE(Date) as Date " 
+					+ "from AccountBook "
 					+ "where Date >= '"+startDate+"' and Date <= '"+endDate+"' "
 					+ "order by Date";
 		

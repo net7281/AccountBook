@@ -6,7 +6,7 @@ alter table AccountBook auto_increment = 0;
 
 -- 테이블 생성
 create table AccountBook (
-    seq int  auto_increment primary key,
+    seq int auto_increment primary key,
     Type varchar(5) not null,
     Amount decimal(10, 2) not null,
     Category varchar(20) not null,
@@ -128,3 +128,9 @@ SELECT 	'all' as Month,
 		SUM(CASE WHEN Type = 'in' THEN Amount ELSE 0 END) AS inAmount,
 		SUM(CASE WHEN Type = 'out' THEN Amount ELSE 0 END) AS outAmount
 FROM AccountBook;
+
+
+select
+seq, Type, Amount, Category, Place, Memo, DATE(Date) as Date 
+where Date = '2023-12-15'
+order by Date
